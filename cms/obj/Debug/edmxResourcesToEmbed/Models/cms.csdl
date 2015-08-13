@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CMSModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CMSEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="editors" EntityType="CMSModel.editor" />
+    <EntitySet Name="menus" EntityType="CMSModel.menu" />
+    <EntitySet Name="modules" EntityType="CMSModel.module" />
+    <EntitySet Name="news_item" EntityType="CMSModel.news_item" />
+    <EntitySet Name="news_item_image" EntityType="CMSModel.news_item_image" />
+    <EntitySet Name="news_item_menu" EntityType="CMSModel.news_item_menu" />
+    <EntitySet Name="pages" EntityType="CMSModel.page" />
+    <EntitySet Name="pages_modules_pos" EntityType="CMSModel.pages_modules_pos" />
+  </EntityContainer>
+  <EntityType Name="editor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="pass" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="type" Type="Int32" />
+  </EntityType>
+  <EntityType Name="menu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="parent_id" Type="Int32" />
+    <Property Name="type" Type="Int32" />
+    <Property Name="order_no" Type="Int32" />
+    <Property Name="show_on_menu" Type="Byte" />
+    <Property Name="is_header" Type="Byte" />
+    <Property Name="is_footer" Type="Byte" />
+  </EntityType>
+  <EntityType Name="module">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="is_news" Type="Byte" />
+    <Property Name="is_album" Type="Byte" />
+    <Property Name="is_list" Type="Byte" />
+    <Property Name="is_poll" Type="Byte" />
+    <Property Name="is_slide" Type="Byte" />
+    <Property Name="is_contact" Type="Byte" />
+    <Property Name="type" Type="Int32" />
+  </EntityType>
+  <EntityType Name="news_item">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="des" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="full_content" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="image" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="deleted" Type="Int32" />
+    <Property Name="datetime" Type="DateTime" Precision="3" />
+    <Property Name="datetimeid" Type="Int32" />
+    <Property Name="total_views" Type="Int32" />
+    <Property Name="user_post" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="modules_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="news_item_image">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="news_item_id" Type="Int32" />
+    <Property Name="image" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="news_item_menu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="news_item_id" Type="Int32" />
+    <Property Name="menu_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="page">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="pages_modules_pos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="pages_id" Type="Int32" />
+    <Property Name="modules_id" Type="Int32" />
+    <Property Name="pos" Type="Byte" />
+    <Property Name="order_no" Type="Int32" />
+  </EntityType>
+</Schema>

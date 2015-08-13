@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CMSModelStoreContainer" CdmEntityContainer="CMSEntities">
+    <EntitySetMapping Name="editors">
+      <EntityTypeMapping TypeName="CMSModel.editor">
+        <MappingFragment StoreEntitySet="editors">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="menus">
+      <EntityTypeMapping TypeName="CMSModel.menu">
+        <MappingFragment StoreEntitySet="menu">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="order_no" ColumnName="order_no" />
+          <ScalarProperty Name="show_on_menu" ColumnName="show_on_menu" />
+          <ScalarProperty Name="is_header" ColumnName="is_header" />
+          <ScalarProperty Name="is_footer" ColumnName="is_footer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="modules">
+      <EntityTypeMapping TypeName="CMSModel.module">
+        <MappingFragment StoreEntitySet="modules">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="is_news" ColumnName="is_news" />
+          <ScalarProperty Name="is_album" ColumnName="is_album" />
+          <ScalarProperty Name="is_list" ColumnName="is_list" />
+          <ScalarProperty Name="is_poll" ColumnName="is_poll" />
+          <ScalarProperty Name="is_slide" ColumnName="is_slide" />
+          <ScalarProperty Name="is_contact" ColumnName="is_contact" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="news_item">
+      <EntityTypeMapping TypeName="CMSModel.news_item">
+        <MappingFragment StoreEntitySet="news_item">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="des" ColumnName="des" />
+          <ScalarProperty Name="full_content" ColumnName="full_content" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="datetimeid" ColumnName="datetimeid" />
+          <ScalarProperty Name="total_views" ColumnName="total_views" />
+          <ScalarProperty Name="user_post" ColumnName="user_post" />
+          <ScalarProperty Name="modules_id" ColumnName="modules_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="news_item_image">
+      <EntityTypeMapping TypeName="CMSModel.news_item_image">
+        <MappingFragment StoreEntitySet="news_item_image">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="news_item_id" ColumnName="news_item_id" />
+          <ScalarProperty Name="image" ColumnName="image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="news_item_menu">
+      <EntityTypeMapping TypeName="CMSModel.news_item_menu">
+        <MappingFragment StoreEntitySet="news_item_menu">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="news_item_id" ColumnName="news_item_id" />
+          <ScalarProperty Name="menu_id" ColumnName="menu_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pages">
+      <EntityTypeMapping TypeName="CMSModel.page">
+        <MappingFragment StoreEntitySet="pages">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pages_modules_pos">
+      <EntityTypeMapping TypeName="CMSModel.pages_modules_pos">
+        <MappingFragment StoreEntitySet="pages_modules_pos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="pages_id" ColumnName="pages_id" />
+          <ScalarProperty Name="modules_id" ColumnName="modules_id" />
+          <ScalarProperty Name="pos" ColumnName="pos" />
+          <ScalarProperty Name="order_no" ColumnName="order_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

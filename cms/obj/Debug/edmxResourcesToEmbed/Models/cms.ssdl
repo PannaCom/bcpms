@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CMSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="CMSModelStoreContainer">
+    <EntitySet Name="editors" EntityType="CMSModel.Store.editors" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="menu" EntityType="CMSModel.Store.menu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="modules" EntityType="CMSModel.Store.modules" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="news_item" EntityType="CMSModel.Store.news_item" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="news_item_image" EntityType="CMSModel.Store.news_item_image" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="news_item_menu" EntityType="CMSModel.Store.news_item_menu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="pages" EntityType="CMSModel.Store.pages" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="pages_modules_pos" EntityType="CMSModel.Store.pages_modules_pos" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="editors">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="pass" Type="nvarchar" MaxLength="50" />
+    <Property Name="type" Type="int" />
+  </EntityType>
+  <EntityType Name="menu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="parent_id" Type="int" />
+    <Property Name="type" Type="int" />
+    <Property Name="order_no" Type="int" />
+    <Property Name="show_on_menu" Type="tinyint" />
+    <Property Name="is_header" Type="tinyint" />
+    <Property Name="is_footer" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="modules">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="nvarchar" MaxLength="150" />
+    <Property Name="is_news" Type="tinyint" />
+    <Property Name="is_album" Type="tinyint" />
+    <Property Name="is_list" Type="tinyint" />
+    <Property Name="is_poll" Type="tinyint" />
+    <Property Name="is_slide" Type="tinyint" />
+    <Property Name="is_contact" Type="tinyint" />
+    <Property Name="type" Type="int" />
+  </EntityType>
+  <EntityType Name="news_item">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="des" Type="ntext" Nullable="false" />
+    <Property Name="full_content" Type="ntext" Nullable="false" />
+    <Property Name="image" Type="nvarchar" MaxLength="150" />
+    <Property Name="status" Type="int" />
+    <Property Name="deleted" Type="int" />
+    <Property Name="datetime" Type="datetime" />
+    <Property Name="datetimeid" Type="int" />
+    <Property Name="total_views" Type="int" />
+    <Property Name="user_post" Type="nvarchar" MaxLength="50" />
+    <Property Name="modules_id" Type="int" />
+  </EntityType>
+  <EntityType Name="news_item_image">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="news_item_id" Type="int" />
+    <Property Name="image" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="news_item_menu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="news_item_id" Type="int" />
+    <Property Name="menu_id" Type="int" />
+  </EntityType>
+  <EntityType Name="pages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="pages_modules_pos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="pages_id" Type="int" />
+    <Property Name="modules_id" Type="int" />
+    <Property Name="pos" Type="tinyint" />
+    <Property Name="order_no" Type="int" />
+  </EntityType>
+</Schema>
