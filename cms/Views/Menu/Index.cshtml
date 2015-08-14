@@ -1,0 +1,197 @@
+﻿@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div id="wrapper">
+        <!-- Navigation -->
+        @Html.Partial("~/Views/_vMenu.cshtml")
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">@cms.Lang.menu_index_header</h1>
+                        <a href="/Menu/Add?parent=-1&depth=-1"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;<button type="button" class="btn btn-primary"> @cms.Lang.menu_add_header_add_root </button></a>
+                        <a href="#" onclick="addnew();"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;<button type="button" class="btn btn-primary"> @cms.Lang.menu_add_header_add_sub </button></a>
+                        <a href="#" onclick="edit();"><span class="fa fa-save"></span>&nbsp;<button type="button" class="btn btn-primary"> @cms.Lang.menu_add_header_edit </button></a>
+                        <a href="#" onclick="del();"><span class="glyphicon glyphicon-remove"></span>&nbsp;<button type="button" class="btn btn-primary"> @cms.Lang.menu_add_header_delete </button></a>
+                        <div id="menulist"></div>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+<script>
+    var max_id = -1;
+    var current_parent = -1;
+    var current_depth = -1;
+    var current_order_no = 0;
+    var movefrom = -1;
+    var moveto = -1;
+    var isLoadingMove = 0;
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        //alert(ev.target.id);
+        ev.dataTransfer.setData("text", ev.target.id);
+        //alert(ev.target.id);
+        console.log("Cai chuyen di la" + ev.target.id);
+        movefrom = ev.target.id;
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+        console.log("Cai chuyen den la " + ev.target.id);
+        moveto = ev.target.id;
+        moveMenuAndSort(movefrom, moveto);
+    }
+
+    function setmenu(id, order_no) {
+        //alert(max_id+"_"+id);
+        for (var j = 1; j <= max_id; j++) {
+            if (document.getElementById("dvmenuname" + j)) {
+                $("#dvmenuname" + j).css("background-color", "white");
+            }
+        }
+        $("#dvmenuname" + id).css("background-color", "yellow");
+        current_parent = id;
+        //current_depth = depth;
+        current_order_no = order_no;
+    }
+    function getRootMenuList() {    
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/Menu/getRootMenuList');
+        xhr.send();
+        var content = "";
+        showLoading();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var news = '{"news":' + xhr.responseText + '}';
+                var json_parsed = $.parseJSON(news);            
+                $("#menulist").html("");
+                for (var i = 0; i < json_parsed.news.length; i++) {
+                    if (json_parsed.news[i]) {
+                        var name = json_parsed.news[i].name;
+                        var id = json_parsed.news[i].id;  
+                        var order_no = json_parsed.news[i].order_no;
+                        $("#menulist").append("<div style=\"width:95%;cursor:pointer;\" id=dvcat" + id + " ondrop=\"drop(event)\" ondragover=\"allowDrop(event)\" draggable=\"true\" ondragstart=\"drag(event)\"><img src=\"/Images/elbow-end-minus.gif\"><span id=dvmenuname" + id + " onclick=\"setmenu(" + id + "," + order_no + ")\" >" + name + "</span></div>");
+                        //$("#menulist").append("<div style=\"width:95%;cursor:pointer;\" id=dvcatitem" + id + "></div>");
+                        if (max_id < id) max_id = id;
+                        getAllChildOfNode(id,1);
+                    }
+                }
+                //$("#menulist").val(value);
+                //alert(news);
+                //hideLoading();
+            }
+        }
+    }
+    getRootMenuList();
+    function getAllChildOfNode(parentid,DEPTH) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/Menu/getAllChildOfNode?id=' + parentid);
+        xhr.send();
+        var content = "";
+        showLoading();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var news = '{"news":' + xhr.responseText + '}';
+                var json_parsed = $.parseJSON(news);
+                //$("#menulist").html("");
+                for (var i = 0; i < json_parsed.news.length; i++) {
+                    if (json_parsed.news[i]) {
+                        var name = json_parsed.news[i].name;
+                        var id = json_parsed.news[i].id;
+                        var depth = DEPTH;//json_parsed.news[i].depth;
+                        var order_no = json_parsed.news[i].order_no;
+                        var spacer = "<img src=\"/Images/elbow-line.gif\" width=16>";
+                        for (var j = 0; j <depth; j++) {
+                            spacer+="<img src=\"/Images/spacer.gif\" width=16>";
+                        }
+                        $("#dvcat" + parentid).append("<div style=\"width:95%;cursor:pointer;\"  id=dvcat" + id + " ondrop=\"drop(event)\" ondragover=\"allowDrop(event)\" draggable=\"true\" ondragstart=\"drag(event)\">" + spacer + "<img src=\"/Images/elbow-end.gif\"><span id=dvmenuname" + id + " onclick=\"setmenu(" + id + "," + order_no + ")\">" + name + "<span></div>");
+                        //$("#dvcatitem" + parentid).append("<div style=\"width:95%;cursor:pointer;\" id=dvcatitem" + id + "></div>");
+                        if (max_id < id) max_id = id;
+                        getAllChildOfNode(id, DEPTH+1);
+                    }
+                }
+                hideLoading();
+                //$("#menulist").val(value);
+                //alert(news);
+            }
+        }
+    }
+    function addnew() {
+        window.location.href = "/Menu/Add?parent="+current_parent;
+    }
+    function edit() {
+        window.location.href = "/Menu/Edit?id=" + current_parent;
+    }
+    function del() {
+        var r = confirm("Delete?");
+        if (r != true) {
+            return;
+        } 
+        var formdata = new FormData();
+        formdata.append("id", current_parent);
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/Menu/Delete');
+        xhr.send(formdata);
+        var content = "";
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                if (xhr.responseText == "1") {
+                    //alert("@cms.Lang.alert_save_success");
+                    window.location.href = "/Menu/Index";
+                } else {
+                    alert("@cms.Lang.alert_delete_not_success");
+                }
+            }          
+        }
+
+    }
+    function moveMenuAndSort(movefrom, moveto) {
+        if (isLoadingMove == 1) return;
+        isLoadingMove = 1;
+        movefrom = parseInt(movefrom.replace("dvmenuname", "").replace("dvcat", ""));
+        moveto = parseInt(moveto.replace("dvmenuname", "").replace("dvcat", ""));
+        //alert(movefrom + "->" + moveto);
+        if (isNaN(movefrom) || isNaN(moveto)) return;
+        var r = confirm("Are your sure?");
+        if (r != true) {
+            window.location.href = "/Menu/Index";
+            return;
+        }
+        showLoading();
+        var formdata = new FormData();
+        formdata.append("fromid", movefrom);
+        formdata.append("toid", moveto);
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/Menu/moveMenuAndSort');
+        xhr.send(formdata);
+        var content = "";
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                if (xhr.responseText == "1") {
+                    //alert("@cms.Lang.alert_save_success");
+                    window.location.href = "/Menu/Index";
+                } else {
+                    alert("@cms.Lang.alert_move_not_success");
+                }
+                isLoadingMove = 0;
+                hideLoading();
+            }
+        }
+    }
+    
+</script>
