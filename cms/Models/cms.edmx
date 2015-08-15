@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CMSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CMSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="CMSModelStoreContainer">
           <EntitySet Name="editors" EntityType="CMSModel.Store.editors" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="menu" EntityType="CMSModel.Store.menu" store:Type="Tables" Schema="dbo" />
@@ -34,8 +34,6 @@
           <Property Name="type" Type="int" />
           <Property Name="order_no" Type="int" />
           <Property Name="show_on_menu" Type="tinyint" />
-          <Property Name="is_header" Type="tinyint" />
-          <Property Name="is_footer" Type="tinyint" />
         </EntityType>
         <EntityType Name="modules">
           <Key>
@@ -101,8 +99,7 @@
           <Property Name="pos" Type="tinyint" />
           <Property Name="order_no" Type="int" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CMSModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -120,87 +117,85 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="pass" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="type" Type="Int32" />
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="pass" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="type" />
         </EntityType>
         <EntityType Name="menu">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="parent_id" Type="Int32" />
-          <Property Name="type" Type="Int32" />
-          <Property Name="order_no" Type="Int32" />
-          <Property Name="show_on_menu" Type="Byte" />
-          <Property Name="is_header" Type="Byte" />
-          <Property Name="is_footer" Type="Byte" />
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="parent_id" />
+          <Property Type="Int32" Name="type" />
+          <Property Type="Int32" Name="order_no" />
+          <Property Type="Byte" Name="show_on_menu" />
         </EntityType>
         <EntityType Name="module">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
-          <Property Name="is_news" Type="Byte" />
-          <Property Name="is_album" Type="Byte" />
-          <Property Name="is_list" Type="Byte" />
-          <Property Name="is_poll" Type="Byte" />
-          <Property Name="is_slide" Type="Byte" />
-          <Property Name="is_contact" Type="Byte" />
-          <Property Name="type" Type="Int32" />
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="is_news" />
+          <Property Type="Byte" Name="is_album" />
+          <Property Type="Byte" Name="is_list" />
+          <Property Type="Byte" Name="is_poll" />
+          <Property Type="Byte" Name="is_slide" />
+          <Property Type="Byte" Name="is_contact" />
+          <Property Type="Int32" Name="type" />
         </EntityType>
         <EntityType Name="news_item">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="title" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
-          <Property Name="des" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="full_content" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="image" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
-          <Property Name="status" Type="Int32" />
-          <Property Name="deleted" Type="Int32" />
-          <Property Name="datetime" Type="DateTime" Precision="3" />
-          <Property Name="datetimeid" Type="Int32" />
-          <Property Name="total_views" Type="Int32" />
-          <Property Name="user_post" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="modules_id" Type="Int32" />
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="title" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="des" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="full_content" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="image" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="status" />
+          <Property Type="Int32" Name="deleted" />
+          <Property Type="DateTime" Name="datetime" Precision="3" />
+          <Property Type="Int32" Name="datetimeid" />
+          <Property Type="Int32" Name="total_views" />
+          <Property Type="String" Name="user_post" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="modules_id" />
         </EntityType>
         <EntityType Name="news_item_image">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="news_item_id" Type="Int32" />
-          <Property Name="image" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="news_item_id" />
+          <Property Type="String" Name="image" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="news_item_menu">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="news_item_id" Type="Int32" />
-          <Property Name="menu_id" Type="Int32" />
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="news_item_id" />
+          <Property Type="Int32" Name="menu_id" />
         </EntityType>
         <EntityType Name="page">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="pages_modules_pos">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="pages_id" Type="Int32" />
-          <Property Name="modules_id" Type="Int32" />
-          <Property Name="pos" Type="Byte" />
-          <Property Name="order_no" Type="Int32" />
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="pages_id" />
+          <Property Type="Int32" Name="modules_id" />
+          <Property Type="Byte" Name="pos" />
+          <Property Type="Int32" Name="order_no" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -211,94 +206,92 @@
           <EntitySetMapping Name="editors">
             <EntityTypeMapping TypeName="CMSModel.editor">
               <MappingFragment StoreEntitySet="editors">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="pass" ColumnName="pass" />
                 <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="menus">
             <EntityTypeMapping TypeName="CMSModel.menu">
               <MappingFragment StoreEntitySet="menu">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
-                <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="order_no" ColumnName="order_no" />
                 <ScalarProperty Name="show_on_menu" ColumnName="show_on_menu" />
-                <ScalarProperty Name="is_header" ColumnName="is_header" />
-                <ScalarProperty Name="is_footer" ColumnName="is_footer" />
+                <ScalarProperty Name="order_no" ColumnName="order_no" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="modules">
             <EntityTypeMapping TypeName="CMSModel.module">
               <MappingFragment StoreEntitySet="modules">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="is_news" ColumnName="is_news" />
-                <ScalarProperty Name="is_album" ColumnName="is_album" />
-                <ScalarProperty Name="is_list" ColumnName="is_list" />
-                <ScalarProperty Name="is_poll" ColumnName="is_poll" />
-                <ScalarProperty Name="is_slide" ColumnName="is_slide" />
-                <ScalarProperty Name="is_contact" ColumnName="is_contact" />
                 <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="is_contact" ColumnName="is_contact" />
+                <ScalarProperty Name="is_slide" ColumnName="is_slide" />
+                <ScalarProperty Name="is_poll" ColumnName="is_poll" />
+                <ScalarProperty Name="is_list" ColumnName="is_list" />
+                <ScalarProperty Name="is_album" ColumnName="is_album" />
+                <ScalarProperty Name="is_news" ColumnName="is_news" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="news_item">
             <EntityTypeMapping TypeName="CMSModel.news_item">
               <MappingFragment StoreEntitySet="news_item">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="des" ColumnName="des" />
-                <ScalarProperty Name="full_content" ColumnName="full_content" />
-                <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="deleted" ColumnName="deleted" />
-                <ScalarProperty Name="datetime" ColumnName="datetime" />
-                <ScalarProperty Name="datetimeid" ColumnName="datetimeid" />
-                <ScalarProperty Name="total_views" ColumnName="total_views" />
-                <ScalarProperty Name="user_post" ColumnName="user_post" />
                 <ScalarProperty Name="modules_id" ColumnName="modules_id" />
+                <ScalarProperty Name="user_post" ColumnName="user_post" />
+                <ScalarProperty Name="total_views" ColumnName="total_views" />
+                <ScalarProperty Name="datetimeid" ColumnName="datetimeid" />
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="full_content" ColumnName="full_content" />
+                <ScalarProperty Name="des" ColumnName="des" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="news_item_image">
             <EntityTypeMapping TypeName="CMSModel.news_item_image">
               <MappingFragment StoreEntitySet="news_item_image">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="news_item_id" ColumnName="news_item_id" />
                 <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="news_item_id" ColumnName="news_item_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="news_item_menu">
             <EntityTypeMapping TypeName="CMSModel.news_item_menu">
               <MappingFragment StoreEntitySet="news_item_menu">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="news_item_id" ColumnName="news_item_id" />
                 <ScalarProperty Name="menu_id" ColumnName="menu_id" />
+                <ScalarProperty Name="news_item_id" ColumnName="news_item_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="pages">
             <EntityTypeMapping TypeName="CMSModel.page">
               <MappingFragment StoreEntitySet="pages">
-                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="pages_modules_pos">
             <EntityTypeMapping TypeName="CMSModel.pages_modules_pos">
               <MappingFragment StoreEntitySet="pages_modules_pos">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="pages_id" ColumnName="pages_id" />
-                <ScalarProperty Name="modules_id" ColumnName="modules_id" />
-                <ScalarProperty Name="pos" ColumnName="pos" />
                 <ScalarProperty Name="order_no" ColumnName="order_no" />
+                <ScalarProperty Name="pos" ColumnName="pos" />
+                <ScalarProperty Name="modules_id" ColumnName="modules_id" />
+                <ScalarProperty Name="pages_id" ColumnName="pages_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

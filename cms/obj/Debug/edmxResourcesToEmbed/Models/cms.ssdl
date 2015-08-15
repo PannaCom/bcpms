@@ -29,8 +29,6 @@
     <Property Name="type" Type="int" />
     <Property Name="order_no" Type="int" />
     <Property Name="show_on_menu" Type="tinyint" />
-    <Property Name="is_header" Type="tinyint" />
-    <Property Name="is_footer" Type="tinyint" />
   </EntityType>
   <EntityType Name="modules">
     <Key>

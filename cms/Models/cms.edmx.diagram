@@ -5,14 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="de7ac02b700643a9b6e7cb7bd4c415e9" Name="Diagram1">
-        <EntityTypeShape EntityType="CMSModel.editor" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.menu" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.module" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.news_item" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.news_item_image" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.news_item_menu" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.page" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.pages_modules_pos" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.editor" Width="1.5" PointX="10.009667738345296" PointY="26.708292899051816" />
+        <EntityTypeShape EntityType="CMSModel.menu" Width="1.5" PointX="7.1941008657189567" PointY="8.58363457423804" />
+        <EntityTypeShape EntityType="CMSModel.module" Width="1.5" PointX="7.9531912412276453" PointY="0.7864080820169338" />
+        <EntityTypeShape EntityType="CMSModel.news_item" Width="1.5" PointX="7.36330513253962" PointY="17.277076148091385" />
+        <EntityTypeShape EntityType="CMSModel.news_item_image" Width="1.5" PointX="5.7032632295523129" PointY="7.94169371199873" />
+        <EntityTypeShape EntityType="CMSModel.news_item_menu" Width="1.5" PointX="1.8731647105296909" PointY="31.079031139183339" />
+        <EntityTypeShape EntityType="CMSModel.page" Width="1.5" PointX="8.4646844605285132" PointY="20.885578120539698" />
+        <EntityTypeShape EntityType="CMSModel.pages_modules_pos" Width="1.5" PointX="1.3006774994082178" PointY="28.451752750413377" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

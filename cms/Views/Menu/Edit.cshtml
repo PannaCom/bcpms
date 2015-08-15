@@ -1,0 +1,166 @@
+﻿@{
+    ViewBag.Title = cms.Lang.menu_add_header;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div id="wrapper">
+        <!-- Navigation -->
+        @Html.Partial("~/Views/_vMenu.cshtml")
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">@cms.Lang.menu_edit_header</h1>                        
+                    </div>
+                    <!-- /.col-lg-12 -->
+                    <!-- /.row -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    @cms.Lang.menu_add_header_notice
+                                    <button type="button" class="btn btn-primary" onclick="Update();">Save</button>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <form role="form">
+                                                <div class="form-group">
+                                                    <label>@cms.Lang.menu_field_name</label>
+                                                    <input class="form-control"  id="name" value="@ViewBag.name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>@cms.Lang.menu_field_type</label>
+                                                    <select class="form-control" id="type">
+                                                        <option value="0">header</option>
+                                                        <option value="1">footer</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>@cms.Lang.menu_field_inmenu</label>
+                                                    <select class="form-control" id="show_on_menu">
+                                                        <option value="1">Yes</option>
+                                                        <option value="0">No</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>@cms.Lang.menu_field_parent_menu</label>
+                                                    <select class="form-control" id="parent_id">                                                        
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>@cms.Lang.menu_field_order_no</label>
+                                                    <select class="form-control" id="order_no"> 
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>                                                       
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>                                                       
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>                                                       
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option> 
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>                                                       
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>                                                       
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>                                                       
+                                                        <option value="15">15</option>
+                                                        <option value="16">16</option> 
+                                                        <option value="17">17</option>
+                                                        <option value="18">18</option>                                                       
+                                                        <option value="19">19</option>
+                                                        <option value="20">20</option>                                                       
+                                                        <option value="21">21</option>
+                                                        <option value="22">22</option>                                                       
+                                                        <option value="23">23</option>
+                                                        <option value="24">24</option> 
+                                                        <option value="25">25</option>
+                                                        <option value="26">26</option>                                                       
+                                                        <option value="27">27</option>
+                                                        <option value="28">28</option>                                                       
+                                                        <option value="29">29</option>
+                                                        <option value="30">30</option>                                                       
+                                                        <option value="31">31</option>
+                                                        <option value="32">32</option>                                                        
+                                                    </select>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+<script>
+    
+    document.getElementById("show_on_menu").value="@ViewBag.show_on_menu";
+    document.getElementById("order_no").value="@ViewBag.order_no";
+    document.getElementById("type").value="@ViewBag.type";
+    //document.getElementById("parent_id").value="@ViewBag.parent_id";
+    function Update() {
+        var formdata = new FormData(); //FormData object
+        var id=@ViewBag.id
+        var name = document.getElementById("name").value;
+        var type = document.getElementById("type").value;       
+        var show_on_menu = document.getElementById("show_on_menu").value;
+        var parent_id = document.getElementById("parent_id").value;
+        var order_no = document.getElementById("order_no").value;
+        //var depth = $("#parent_id option:selected").attr("depth");
+        //depth=parseInt(depth)+1;
+        if (name==""){
+            alert("@cms.Lang.alert_input_name_field");
+            return;
+        }
+        //alert(depth + "_" + parent_id);
+        //return;
+        formdata.append("id", id);
+        formdata.append("name", name);
+        formdata.append("type", type);     
+        formdata.append("show_on_menu", show_on_menu);
+        formdata.append("parent_id", parent_id);
+        //formdata.append("depth", depth);
+        formdata.append("order_no", order_no);
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/Menu/Edit_Update');
+        xhr.send(formdata);
+        var content = "";
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                if (xhr.responseText == "1") {
+                    //alert("@cms.Lang.alert_save_success");
+                    window.location.href = "/Menu/Index";
+                } else {
+                    alert("@cms.Lang.alert_save_not_success");
+                }
+            }
+            @*else {
+                alert("@cms.Lang.alert_save_not_success");
+            }*@
+        }
+    }
+    function getAllNodeMenu(idselected,parent_id) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/Menu/getAllNodeMenu?idselected=' + idselected+"&parent_id="+parent_id);
+        xhr.send();
+        var content = "";
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                $("#parent_id").html(xhr.responseText);
+                //$("#menulist").val(value);
+                //alert(news);
+            }
+        }
+    }
+    getAllNodeMenu(@ViewBag.id,@ViewBag.parent_id);
+</script>

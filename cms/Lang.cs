@@ -29,6 +29,7 @@ namespace cms
         public static string menu_field_parent_menu = "Belong Parent Menu *";
         public static string menu_field_order_no = "Order No";
         public static string menu_root_name = "Root Menu";
+        public static string menu_field_type = "Type";
 
         ////Alert
         public static string alert_save_success = "Saved";

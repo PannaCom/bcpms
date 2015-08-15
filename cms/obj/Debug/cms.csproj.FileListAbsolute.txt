@@ -29,8 +29,8 @@ D:\Project\GitHub\BeeCms\branches\svn\cms\bin\System.Web.WebPages.Razor.dll
 D:\Project\GitHub\BeeCms\branches\svn\cms\bin\WebGrease.dll
 D:\Project\GitHub\BeeCms\branches\svn\cms\bin\WebMatrix.Data.dll
 D:\Project\GitHub\BeeCms\branches\svn\cms\bin\WebMatrix.WebData.dll
-D:\Project\GitHub\BeeCms\branches\svn\cms\bin\EntityFramework.xml
 D:\Project\GitHub\BeeCms\branches\svn\cms\bin\Newtonsoft.Json.xml
+D:\Project\GitHub\BeeCms\branches\svn\cms\bin\EntityFramework.xml
 D:\Project\GitHub\BeeCms\branches\svn\cms\bin\System.Net.Http.Formatting.xml
 D:\Project\GitHub\BeeCms\branches\svn\cms\bin\System.Web.Helpers.xml
 D:\Project\GitHub\BeeCms\branches\svn\cms\bin\System.Web.Http.xml
@@ -80,6 +80,5 @@ D:\Project\GitHub\BeeCms\branches\svn\cms\bin\ko\System.Spatial.resources.dll
 D:\Project\GitHub\BeeCms\branches\svn\cms\bin\ru\System.Spatial.resources.dll
 D:\Project\GitHub\BeeCms\branches\svn\cms\bin\zh-Hans\System.Spatial.resources.dll
 D:\Project\GitHub\BeeCms\branches\svn\cms\bin\zh-Hant\System.Spatial.resources.dll
-D:\Project\GitHub\BeeCms\branches\svn\cms\obj\Debug\cms.csprojResolveAssemblyReference.cache
 D:\Project\GitHub\BeeCms\branches\svn\cms\obj\Debug\cms.dll
 D:\Project\GitHub\BeeCms\branches\svn\cms\obj\Debug\cms.pdb

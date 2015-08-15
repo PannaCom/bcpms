@@ -20,7 +20,5 @@ namespace cms.Models
         public Nullable<int> type { get; set; }
         public Nullable<int> order_no { get; set; }
         public Nullable<byte> show_on_menu { get; set; }
-        public Nullable<byte> is_header { get; set; }
-        public Nullable<byte> is_footer { get; set; }
     }
 }

@@ -14,86 +14,84 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="pass" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="type" Type="Int32" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="name" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="pass" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="type" />
   </EntityType>
   <EntityType Name="menu">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="parent_id" Type="Int32" />
-    <Property Name="type" Type="Int32" />
-    <Property Name="order_no" Type="Int32" />
-    <Property Name="show_on_menu" Type="Byte" />
-    <Property Name="is_header" Type="Byte" />
-    <Property Name="is_footer" Type="Byte" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="parent_id" />
+    <Property Type="Int32" Name="type" />
+    <Property Type="Int32" Name="order_no" />
+    <Property Type="Byte" Name="show_on_menu" />
   </EntityType>
   <EntityType Name="module">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
-    <Property Name="is_news" Type="Byte" />
-    <Property Name="is_album" Type="Byte" />
-    <Property Name="is_list" Type="Byte" />
-    <Property Name="is_poll" Type="Byte" />
-    <Property Name="is_slide" Type="Byte" />
-    <Property Name="is_contact" Type="Byte" />
-    <Property Name="type" Type="Int32" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="name" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Type="Byte" Name="is_news" />
+    <Property Type="Byte" Name="is_album" />
+    <Property Type="Byte" Name="is_list" />
+    <Property Type="Byte" Name="is_poll" />
+    <Property Type="Byte" Name="is_slide" />
+    <Property Type="Byte" Name="is_contact" />
+    <Property Type="Int32" Name="type" />
   </EntityType>
   <EntityType Name="news_item">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="title" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
-    <Property Name="des" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-    <Property Name="full_content" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-    <Property Name="image" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
-    <Property Name="status" Type="Int32" />
-    <Property Name="deleted" Type="Int32" />
-    <Property Name="datetime" Type="DateTime" Precision="3" />
-    <Property Name="datetimeid" Type="Int32" />
-    <Property Name="total_views" Type="Int32" />
-    <Property Name="user_post" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="modules_id" Type="Int32" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="title" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="des" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="full_content" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="image" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="status" />
+    <Property Type="Int32" Name="deleted" />
+    <Property Type="DateTime" Name="datetime" Precision="3" />
+    <Property Type="Int32" Name="datetimeid" />
+    <Property Type="Int32" Name="total_views" />
+    <Property Type="String" Name="user_post" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="modules_id" />
   </EntityType>
   <EntityType Name="news_item_image">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="news_item_id" Type="Int32" />
-    <Property Name="image" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="news_item_id" />
+    <Property Type="String" Name="image" MaxLength="150" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="news_item_menu">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="news_item_id" Type="Int32" />
-    <Property Name="menu_id" Type="Int32" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="news_item_id" />
+    <Property Type="Int32" Name="menu_id" />
   </EntityType>
   <EntityType Name="page">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="name" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="pages_modules_pos">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="pages_id" Type="Int32" />
-    <Property Name="modules_id" Type="Int32" />
-    <Property Name="pos" Type="Byte" />
-    <Property Name="order_no" Type="Int32" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="pages_id" />
+    <Property Type="Int32" Name="modules_id" />
+    <Property Type="Byte" Name="pos" />
+    <Property Type="Int32" Name="order_no" />
   </EntityType>
 </Schema>

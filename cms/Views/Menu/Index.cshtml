@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">@cms.Lang.menu_index_header</h1>
-                        <a href="/Menu/Add?parent=-1&depth=-1"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;<button type="button" class="btn btn-primary"> @cms.Lang.menu_add_header_add_root </button></a>
+                        <a href="/Menu/Add?parent_id=-1&depth=-1"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;<button type="button" class="btn btn-primary"> @cms.Lang.menu_add_header_add_root </button></a>
                         <a href="#" onclick="addnew();"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;<button type="button" class="btn btn-primary"> @cms.Lang.menu_add_header_add_sub </button></a>
                         <a href="#" onclick="edit();"><span class="fa fa-save"></span>&nbsp;<button type="button" class="btn btn-primary"> @cms.Lang.menu_add_header_edit </button></a>
                         <a href="#" onclick="del();"><span class="glyphicon glyphicon-remove"></span>&nbsp;<button type="button" class="btn btn-primary"> @cms.Lang.menu_add_header_delete </button></a>
@@ -77,6 +77,7 @@
         showLoading();
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
+                //alert(xhr.responseText);
                 var news = '{"news":' + xhr.responseText + '}';
                 var json_parsed = $.parseJSON(news);            
                 $("#menulist").html("");
@@ -85,8 +86,8 @@
                         var name = json_parsed.news[i].name;
                         var id = json_parsed.news[i].id;  
                         var order_no = json_parsed.news[i].order_no;
-                        $("#menulist").append("<div style=\"width:95%;cursor:pointer;\" id=dvcat" + id + " ondrop=\"drop(event)\" ondragover=\"allowDrop(event)\" draggable=\"true\" ondragstart=\"drag(event)\"><img src=\"/Images/elbow-end-minus.gif\"><span id=dvmenuname" + id + " onclick=\"setmenu(" + id + "," + order_no + ")\" >" + name + "</span></div>");
-                        //$("#menulist").append("<div style=\"width:95%;cursor:pointer;\" id=dvcatitem" + id + "></div>");
+                        $("#menulist").append("<div style=\"width:95%;cursor:pointer;\" id=dvmenu" + id + " ondrop=\"drop(event)\" ondragover=\"allowDrop(event)\" draggable=\"true\" ondragstart=\"drag(event)\"><img src=\"/Images/elbow-end-minus.gif\"><span id=dvmenuname" + id + " onclick=\"setmenu(" + id + "," + order_no + ")\" >" + name + "</span></div>");
+                        //$("#menulist").append("<div style=\"width:95%;cursor:pointer;\" id=dvmenuitem" + id + "></div>");
                         if (max_id < id) max_id = id;
                         getAllChildOfNode(id,1);
                     }
@@ -119,8 +120,8 @@
                         for (var j = 0; j <depth; j++) {
                             spacer+="<img src=\"/Images/spacer.gif\" width=16>";
                         }
-                        $("#dvcat" + parentid).append("<div style=\"width:95%;cursor:pointer;\"  id=dvcat" + id + " ondrop=\"drop(event)\" ondragover=\"allowDrop(event)\" draggable=\"true\" ondragstart=\"drag(event)\">" + spacer + "<img src=\"/Images/elbow-end.gif\"><span id=dvmenuname" + id + " onclick=\"setmenu(" + id + "," + order_no + ")\">" + name + "<span></div>");
-                        //$("#dvcatitem" + parentid).append("<div style=\"width:95%;cursor:pointer;\" id=dvcatitem" + id + "></div>");
+                        $("#dvmenu" + parentid).append("<div style=\"width:95%;cursor:pointer;\"  id=dvmenu" + id + " ondrop=\"drop(event)\" ondragover=\"allowDrop(event)\" draggable=\"true\" ondragstart=\"drag(event)\">" + spacer + "<img src=\"/Images/elbow-end.gif\"><span id=dvmenuname" + id + " onclick=\"setmenu(" + id + "," + order_no + ")\">" + name + "<span></div>");
+                        //$("#dvmenuitem" + parentid).append("<div style=\"width:95%;cursor:pointer;\" id=dvmenuitem" + id + "></div>");
                         if (max_id < id) max_id = id;
                         getAllChildOfNode(id, DEPTH+1);
                     }
@@ -132,7 +133,7 @@
         }
     }
     function addnew() {
-        window.location.href = "/Menu/Add?parent="+current_parent;
+        window.location.href = "/Menu/Add?parent_id="+current_parent;
     }
     function edit() {
         window.location.href = "/Menu/Edit?id=" + current_parent;
@@ -163,8 +164,8 @@
     function moveMenuAndSort(movefrom, moveto) {
         if (isLoadingMove == 1) return;
         isLoadingMove = 1;
-        movefrom = parseInt(movefrom.replace("dvmenuname", "").replace("dvcat", ""));
-        moveto = parseInt(moveto.replace("dvmenuname", "").replace("dvcat", ""));
+        movefrom = parseInt(movefrom.replace("dvmenuname", "").replace("dvmenu", ""));
+        moveto = parseInt(moveto.replace("dvmenuname", "").replace("dvmenu", ""));
         //alert(movefrom + "->" + moveto);
         if (isNaN(movefrom) || isNaN(moveto)) return;
         var r = confirm("Are your sure?");
